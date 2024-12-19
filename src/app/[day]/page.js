@@ -19,7 +19,7 @@ export default function VocabularyPage({params}) {
   useEffect(() => {
     async function fetchWords() {
       const response = await fetch(
-        `${NEXT_PUBLIC_BASE_URL}/api/words/${day}?starred=${filterStarred}` // 필터 상태에 따라 API 호출
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/words/${day}?starred=${filterStarred}` // 필터 상태에 따라 API 호출
       );
       const data = await response.json();
       setWords(data);
@@ -31,7 +31,7 @@ export default function VocabularyPage({params}) {
   // 서버에서 단어 데이터를 가져오기
   useEffect(() => {
     async function fetchWords() {
-      const response = await fetch(`${NEXT_PUBLIC_BASE_URL}/api/words/${day}`); // 동적 API 호출
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/words/${day}`); // 동적 API 호출
       const data = await response.json();
       setWords(data);
       setCurrentIndex(0); // 인덱스 초기화
@@ -43,7 +43,7 @@ export default function VocabularyPage({params}) {
   const toggleStar = async (id, newStarState) => {
     try {
       // 요청 URL에 day 포함
-      const response = await fetch(`${NEXT_PUBLIC_BASE_URL}/api/words/${day}`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/words/${day}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
@@ -117,7 +117,7 @@ export default function VocabularyPage({params}) {
     }
   
     // API 요청
-    const response = await fetch(`${NEXT_PUBLIC_BASE_URL}/api/words/${selectedDay}`, {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/words/${selectedDay}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -149,7 +149,7 @@ export default function VocabularyPage({params}) {
 
   const updateWord = async (id, updatedWord, updatedMeaning) => {
     try {
-      const response = await fetch(`${NEXT_PUBLIC_BASE_URL}/api/words/${day}`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/words/${day}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
@@ -181,7 +181,7 @@ export default function VocabularyPage({params}) {
     if (!confirmDelete) return;
   
     try {
-      const response = await fetch(`${NEXT_PUBLIC_BASE_URL}/api/words/${day}`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/words/${day}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
