@@ -14,13 +14,6 @@ db.serialize(() => {
       day INTEGER NOT NULL
     )
   `);
-
-  // 샘플 데이터 삽입
-  const stmt = db.prepare('INSERT INTO words (word, meaning, day) VALUES (?, ?, ?)');
-  stmt.run('replenish', '다시 가득 채우다, 보충하다', 1);
-  stmt.run('confront', '직면하다, 처하다; (위험 따위에) 맞서다', 1);
-  stmt.run('sterilize', '소독하다, 살균하다', 1);
-  stmt.finalize();
 });
 
 db.close();
