@@ -202,7 +202,6 @@ export default function VocabularyPage({params}) {
     }
   };
 
-
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.repeat) return;
